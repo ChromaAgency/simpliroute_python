@@ -64,24 +64,22 @@ class Visit(AbstractSimplirouteV1Dataclass):
     
     on_its_way: None
     title:str 
-    items:List[Item] = field(default_factory=list)
+    items:List[Item] = field(default_factory=list) 
     endpoint:str = field(default='routes/visits', metadata=config(exclude=lambda x: True))
     
-
-    @property
-    def endpoint_url(self):
-        return self.config.get_endpoint(self.endpoint)    
-
     def create(self):
         """Podes usar este para convertirlo a json, habria que ver si algun campo no jode."""
-        self.to_json()
+        response = requests.post(self.endpoint_url, json=self.to_json(), headers=self.config.headers)
         ... 
     
-    def update(self, update_data:dict):
+    @classmethod
+    def update(cls, config:ConfigV1, visit_id:str, update_data:dict):
+        update_url = config.get_endpoint(f"{cls.endpoint}/{visit_id}")
         ...
 
-    @staticmethod
-    def delete(config:ConfigV1, visit_id:str):
+    @classmethod
+    def delete(cls, config:ConfigV1, visit_id:str):
+        delete_url = config.get_endpoint(f"{cls.endpoint}/{visit_id}")
         ...
     
     @classmethod
@@ -90,8 +88,8 @@ class Visit(AbstractSimplirouteV1Dataclass):
         Usamos un archivo config, que le vamos a pasar a los object, con ese sacamos token, headers y endpoint. Este endpoint ya genera la visita perfectamente.
         """
         response = requests.get(config.get_endpoint(f"{cls.endpoint}/{visit_id}"), headers=config.headers)        
-        print(response.json())
         return cls.from_dict({"config":config, **response.json()})
+    
 
     
         

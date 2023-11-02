@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-class Config:
-    base_url:str = 'https://api.simpliroute.com/v1'
+class AConfig:
+    base_url:str = 'https://api.simpliroute.com'
 
     @property
     def headers(self):
@@ -11,9 +11,12 @@ class Config:
         return f'{self.base_url}/{endpoint}'
     
 @dataclass
-class ConfigV1(Config):
+class ConfigV1(AConfig):
     token:str = None
 
+    def get_endpoint(self, endpoint: str):
+        return f'{self.base_url}/v1/{endpoint}' 
+    
     @property
     def headers(self):
        return {
