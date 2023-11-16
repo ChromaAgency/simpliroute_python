@@ -4,12 +4,12 @@ from dataclasses import dataclass
 class Item:
     id: int
     title: str
-    status: str
-    load: None
-    load_2: None
-    load_3: float
+    load: float
     reference: str
-    notes: str
     quantity_planned: float
-    quantity_delivered: float 
     
+    status: str = ""
+    load_2: float = 0
+    load_3: float = 0
+    notes: str = ""
+    quantity_delivered: float = 0
