@@ -13,13 +13,13 @@ from simpliroute.items.item import Item
 class Vehicle(AbstractSimplirouteV1Dataclass):
     name: str
     capacity: int
+    default_driver: int
     location_start_address: str
     location_start_latitude: str
     location_start_longitude: str
     location_end_address: str
     location_end_latitude: str
     location_end_longitude: str
-    default_driver: str = ''
     endpoint:str = field(default='routes/vehicles/', metadata=config(exclude=lambda x: True))
     skills: list = field(default_factory=list)
 
