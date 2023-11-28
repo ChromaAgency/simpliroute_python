@@ -70,10 +70,10 @@ class Visit(AbstractSimplirouteV1Dataclass):
     
     def create(self):
         response = requests.post(f'{self.endpoint_url}/', data=self.to_json(), headers=self.config.headers)
-        if not response.ok:
-            raise Exception(f'Response fail: {response.text}')
-        self.id = response.json()['id']
-        return self
+        # if not response.ok:
+        #     raise Exception(f'Response fail: {response.text}')
+        # self.id = response.json()['id']
+        return response
         
     
     @classmethod    
