@@ -14,7 +14,8 @@ class Item:
     notes: str = ""
     quantity_delivered: float = 0
 
-    def to_dict(self):
+    @classmethod
+    def to_dict(self, items):
         item_list = []
         for item in self:
             item_dict = {
