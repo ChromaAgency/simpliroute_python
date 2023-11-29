@@ -1,5 +1,5 @@
 from dataclasses import dataclass   
-
+import json
 @dataclass
 class Item:
     id: int
@@ -31,3 +31,7 @@ class Item:
             }
             item_list.append(item_dict)
         return item_list
+    
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
