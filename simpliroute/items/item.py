@@ -15,9 +15,9 @@ class Item:
     quantity_delivered: float = 0
 
     @classmethod
-    def to_dict(self, items):
+    def to_dict(cls, items):
         item_list = []
-        for item in self:
+        for item in items:
             item_dict = {
                 'title':item.title,
                 'load':item.load,
