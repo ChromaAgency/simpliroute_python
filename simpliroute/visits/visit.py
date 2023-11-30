@@ -14,7 +14,6 @@ class Visit(AbstractSimplirouteV1Dataclass):
     title: str
     address: str
     reference: str
-    load: float
     window_start: None
     window_end: None
     duration: str
@@ -26,6 +25,7 @@ class Visit(AbstractSimplirouteV1Dataclass):
     # properties: any
     
     id: int = None
+    load: float = field(default=None, metadata=config(exclude=lambda x: not x))
     on_its_way: None = None
     items:List[Item] = field(default_factory=list) 
     endpoint:str = field(default='routes/visits', metadata=config(exclude=lambda x: True))
