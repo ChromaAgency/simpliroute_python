@@ -1,5 +1,5 @@
 from dataclasses import asdict, dataclass, field
-from typing import List, TypedDict
+from typing import List, TypedDict, Self
 import json
 
 from simpliroute.abstract.abstract_dataclass import  AbstractSimplirouteV1Dataclass
