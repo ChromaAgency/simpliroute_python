@@ -1,7 +1,7 @@
 from dataclasses import asdict, dataclass, field
-from typing import List, TypedDict, Self
+from typing import List, TypedDict
 import json
-
+from typing_extensions import Self
 from simpliroute.abstract.abstract_dataclass import  AbstractSimplirouteV1Dataclass
 from simpliroute.config.config import ConfigV1   
 import requests
