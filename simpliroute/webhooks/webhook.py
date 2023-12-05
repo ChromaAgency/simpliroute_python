@@ -7,7 +7,8 @@ from simpliroute.config.config import ConfigV1
 import requests
 from dataclasses_json import dataclass_json, config
 from simpliroute.items.item import Item
-
+import logging
+_logger = logging.getLogger(__name__)  
 
 class WebhookRequestBody(TypedDict):
     url: str
@@ -19,10 +20,12 @@ class Webhook(AbstractSimplirouteV1Dataclass):
     url: str
     webhook: str
    
-    endpoint:str = field(default='addons/webhooks', metadata=config(exclude=lambda x: True))
+    endpoint:str = field(default='addons/webhooks/', metadata=config(exclude=lambda x: True))
     
     def create(self):
         response = requests.post(f'{self.endpoint_url}', data=self.to_json(), headers=self.config.headers)
+        _logger.info(self.endpoint_url) 
+        _logger.info(self.to_json())
         # if not response.ok:
         #     raise Exception(f'Response fail: {response.text}')
         # self.id = response.json()['id']
