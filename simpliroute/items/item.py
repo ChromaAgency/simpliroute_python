@@ -16,6 +16,7 @@ class Item:
     load_3: float = 0
     notes: str = ""
     quantity_delivered: float = field(default=None, metadata=config(exclude=lambda x: not x))
+    endpoint:str = field(default='routes/visits', metadata=config(exclude=lambda x: True))
 
     @classmethod    
     def update_items(cls, config:ConfigV1, visit_id:str, update_data:dict):
