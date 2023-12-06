@@ -92,3 +92,9 @@ class Visit(AbstractSimplirouteV1Dataclass):
     def get(cls, config:ConfigV1, visit_id:str) -> 'Visit':
         response = requests.get(config.get_endpoint(f"{cls.endpoint}/{visit_id}"), headers=config.headers)        
         return cls.from_dict({"config":config, **response.json()})
+    
+    @classmethod    
+    def update_items(cls, config:ConfigV1, visit_id:str, items:Item):
+        update_url = config.get_endpoint(f"{cls.endpoint}/{visit_id}/items")
+        response = requests.put(update_url,json=items, headers=config.headers)
+        return response
