@@ -20,6 +20,6 @@ class Item:
 
     @classmethod    
     def update_items(cls, config:ConfigV1, visit_id:str, update_data:dict):
-        update_url = config.get_endpoint(f"{cls.endpoint}/{visit_id}/items")
+        update_url = config.get_endpoint(f"routes/visits/{visit_id}/items")
         response = requests.put(update_url,json=update_data, headers=config.headers)
         return response
