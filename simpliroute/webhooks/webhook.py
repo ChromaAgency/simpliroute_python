@@ -13,14 +13,14 @@ _logger = logging.getLogger(__name__)
 class WebhookRequestBody(TypedDict):
     url: str
     webhook: str
-    headers: str
+    headers: None
  
 @dataclass_json
 @dataclass
 class Webhook(AbstractSimplirouteV1Dataclass):
     url: str
     webhook: str
-    headers: str
+    headers: None
     endpoint:str = field(default='addons/webhooks/', metadata=config(exclude=lambda x: True))
     
     def create(self):
