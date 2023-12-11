@@ -1,4 +1,16 @@
 # .github/workflows/ci-cd.yml
+name: CI/CD
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  release:
+    types: [created]
+    branches:
+      - master
 jobs:
   build:
     name: Build distribution 📦
