@@ -20,8 +20,9 @@ class ConfigV1(AConfig):
     @property
     def headers(self):
        return {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
         "authorization": f"Token {self.token}",
+        "Accept": "*/*"
     }
 
 
