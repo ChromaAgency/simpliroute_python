@@ -26,6 +26,7 @@ class Route(AbstractSimplirouteV1Dataclass):
     location_end_latitude: str = field(default='', metadata=config(exclude=lambda x: not x))
     location_end_longitude: str = field(default='', metadata=config(exclude=lambda x: not x))
     comment: str = ""
+    visits: list = field(default_factory=list)
 
 
     def create(self):
