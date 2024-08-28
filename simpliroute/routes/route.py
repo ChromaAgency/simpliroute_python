@@ -35,7 +35,7 @@ class Route(AbstractSimplirouteV1Dataclass):
     
     @classmethod
     def list(cls, config:ConfigV1, plan_id:str):
-        response = requests.get(config.get_endpoint(f"plans/{plan_id}/visits/"),headers=config.headers)
+        response = requests.get(config.get_endpoint(f"plans/routes/{plan_id}/visits/"),headers=config.headers)
         return response
     
 
