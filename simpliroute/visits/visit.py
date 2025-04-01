@@ -7,6 +7,7 @@ from simpliroute.config.config import ConfigV1
 import requests
 from dataclasses_json import dataclass_json, config
 from simpliroute.items.item import Item
+from simpliroute.properties.properties import Property
 
 @dataclass_json
 @dataclass
@@ -22,8 +23,7 @@ class Visit(AbstractSimplirouteV1Dataclass):
     contact_phone: str
     notes: str
     planned_date: str
-    # Should change later to a Property object
-    # properties: any
+    properties: Property
     
     id: int = None
     on_its_way: None = None
