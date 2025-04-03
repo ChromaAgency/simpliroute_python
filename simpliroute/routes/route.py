@@ -38,6 +38,11 @@ class Route(AbstractSimplirouteV1Dataclass):
         response = requests.get(config.get_endpoint(f"plans/routes/{plan_id}/visits/"),headers=config.headers)
         return response
     
+    @classmethod
+    def get_observations(cls, config:ConfigV1):
+        response = requests.get(config.get_endpoint(f"{cls.endpoint}/observations"),headers=config.headers)
+        return response
+        
 
 
     #Create route que tiene un request, en webhook routeobject crearlo como en visit
