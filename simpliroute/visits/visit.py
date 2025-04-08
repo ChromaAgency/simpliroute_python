@@ -23,7 +23,7 @@ class Visit(AbstractSimplirouteV1Dataclass):
     contact_phone: str
     notes: str
     planned_date: str
-    properties: Property
+    properties: Property = None
     
     id: int = None
     on_its_way: None = None
