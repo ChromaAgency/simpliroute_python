@@ -1,7 +1,6 @@
 from dataclasses import asdict, dataclass, field
 from typing import List, TypedDict
 import json
-from typing_extensions import Self
 from simpliroute.abstract.abstract_dataclass import  AbstractSimplirouteV1Dataclass
 from simpliroute.config.config import ConfigV1   
 import requests
@@ -46,12 +45,12 @@ class Webhook(AbstractSimplirouteV1Dataclass):
         return response
     
     @classmethod
-    def get(cls, config:ConfigV1, webhook:str) -> Self:
+    def get(cls, config:ConfigV1, webhook:str):
         response = requests.get(config.get_endpoint(f"{cls.endpoint}"), headers=config.headers, json={"webhook":webhook})        
         return cls.from_dict({"config":config, "webhook":webhook, "url":cls.endpoint})
 
     @classmethod
-    def list(cls, config:ConfigV1) -> List[Self]:
+    def list(cls, config:ConfigV1):
         response = requests.get(config.get_endpoint(f"{cls.endpoint}"), headers=config.headers)        
         # TODO: Get all possible repsonses of webhooks and map them as webhooks
         return cls.from_dict({"config":config, **response.json()})
